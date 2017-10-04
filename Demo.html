@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+       
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+   google.charts.load('current', {'packages':['timeline']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var container = document.getElementById('timeline');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
+
+        dataTable.addColumn({ type: 'string', id: 'President' });
+        dataTable.addColumn({ type: 'date', id: 'Start' });
+        dataTable.addColumn({ type: 'date', id: 'End' });
+        dataTable.addRows([
+          [ 'EFXTEK', new Date(2012, 5, 30), new Date(2015,8, 30) ],
+          [ 'G.E. Roper',      new Date(2015, 8, 30),  new Date(2016, 12, 20) ],
+          [ 'Mueller Cleveland',  new Date(2016, 9, 12),  new Date() ]]);
+
+        chart.draw(dataTable);
+      }
+  </script>
+  
 </head>
 <body>
+  <div class="container-fluid" id="timeline" style="height: 180px;">
+    
+  </div>
   
 <div class="container-fluid">
   <h1>This is going to be a game soon! Don't worry :D</h1>      
